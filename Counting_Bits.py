@@ -1,21 +1,7 @@
 class Solution:
 
-    def countBits(self, n: int) -> List[int]:
-        ans = []
-        for i in range(n+1):
-            bit = 0
-            if i == 0:
-                ans.append(i)
-                continue
-            while i/2 != 0:
-                if i%2==1:
-                    bit += 1
-                    i -= 1
-                    i /= 2
-                else:
-                    i /= 2
-
-            ans.append(bit)
-
+    def countBits(self, num: int) -> List[int]:
+        ans = [0]
+        for i in range(1, num+1):
+            ans.append(ans[i >> 1] + i % 2)
         return ans
-        
